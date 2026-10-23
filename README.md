@@ -1,3 +1,16 @@
+# NCM — Intra-Chunk Attribute Contradiction Diagnostic
+> **Fork Note:** This fork extends [HazyResearch/ncm](https://github.com/HazyResearch/ncm) with `eval_contra.py`, a controlled synthetic evaluation suite diagnosing intra-chunk attribute flips across the 12-level VQ-VAE residual hierarchy (`8` to `128`).
+
+### Key Diagnostic Findings
+* **Stage-1 VQ-VAE Oracle:** Exhibits near-zero intra-chunk contradiction (**0.007%**) and near-zero token entropy (**0.0003**), confirming the discrete concept bottleneck preserves local attribute consistency.
+* **Stage-2 Generator (`NextConceptTransformer`):** Exhibits a persistent **~59% contradiction plateau** across `10k` to `75k` training steps (spiking to **77.9%–80.6%** at the `108–128` distance bucket), isolating the failure mode to parallel token decoding entropy.
+
+![Contradiction Diagnostic Plot](YOUR_PLOT_FILENAME.png)
+
+---
+*(Original Hazy Research README below)*
+
+
 <h1 align="center"><img src="assets/ncm_logo.png" height="28" alt="NCM logo" /> Next-Concept Modeling</h1>
 
 <p align="center"><strong>Fast, Parallel Coarse-to-Fine Text Generation</strong></p>
